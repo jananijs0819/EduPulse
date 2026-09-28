@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPulse | Smart Student Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7ff;color:#20243a;transition:.3s}
+body.dark{background:#101426;color:#eef1ff}
+header{background:linear-gradient(120deg,#6c3cff,#b52cff,#00c9ff);color:white;padding:24px 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 30px #6c3cff55}
+.logo{font-size:28px;font-weight:800}.logo span{color:#ffe45e}
+.header-right{display:flex;gap:10px;align-items:center}
+button{border:0;border-radius:12px;padding:11px 16px;cursor:pointer;font-weight:700}
+.toggle{background:#ffffff22;color:white;border:1px solid #ffffff55}
+.container{width:92%;max-width:1250px;margin:25px auto}
+.hero{background:linear-gradient(135deg,#fff,#eef0ff);padding:25px;border-radius:22px;margin-bottom:22px;box-shadow:0 12px 35px #5367b322}
+.dark .hero{background:#1b2038}
+.hero h1{font-size:30px;margin-bottom:7px}.hero p{color:#69708b}.dark .hero p{color:#b9bfd9}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+.card{padding:20px;border-radius:20px;color:white;box-shadow:0 10px 25px #00000018;position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;width:80px;height:80px;border-radius:50%;background:#fff2;right:-20px;top:-20px}
+.c1{background:linear-gradient(135deg,#6c3cff,#9b5cff)}.c2{background:linear-gradient(135deg,#00a8ff,#00d4a8)}
+.c3{background:linear-gradient(135deg,#ff7a18,#ff3d81)}.c4{background:linear-gradient(135deg,#14b86e,#62d84e)}
+.card h3{font-size:14px;opacity:.9}.number{font-size:32px;font-weight:800;margin-top:8px}
+.panel{background:white;border-radius:20px;padding:22px;margin-bottom:22px;box-shadow:0 8px 28px #354b8a18}
+.dark .panel{background:#1b2038}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.panel-head h2{font-size:20px}
+.badge{padding:6px 10px;border-radius:20px;background:#eee9ff;color:#693cff;font-size:12px;font-weight:700}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th{background:linear-gradient(90deg,#6c3cff,#9c45ff);color:white;padding:13px;text-align:left}
+td{padding:13px;border-bottom:1px solid #e9ebf5}
+.dark td{border-color:#303752}
+tr:hover td{background:#f7f4ff}.dark tr:hover td{background:#242a46}
+.status{padding:6px 10px;border-radius:15px;font-size:12px;font-weight:700}
+.present,.completed{background:#dcfff0;color:#07945a}.absent{background:#ffe4e8;color:#d52f50}.pending{background:#fff1cf;color:#b16a00}
+.progress{height:9px;background:#e9ecf6;border-radius:20px;overflow:hidden}.bar{height:100%;border-radius:20px;background:linear-gradient(90deg,#6c3cff,#00c9ff)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.profile{display:flex;gap:18px;align-items:center}.avatar{width:70px;height:70px;border-radius:20px;background:linear-gradient(135deg,#6c3cff,#ff3d81);display:grid;place-items:center;color:white;font-size:30px;font-weight:800}
+input{padding:12px;border:1px solid #dfe3f2;border-radius:10px;width:100%;margin:5px 0 12px;background:transparent;color:inherit}
+.add{background:linear-gradient(90deg,#6c3cff,#ff3d81);color:white}
+footer{text-align:center;padding:25px;color:#777}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}.hero h1{font-size:24px}header{padding:18px 4%}.logo{font-size:22px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">✦ Edu<span>Pulse</span></div>
+<div class="header-right">
+<span>Student Portal</span>
+<button class="toggle" onclick="toggleDark()">🌙 Theme</button>
+</div>
+</header>
+
+<main class="container">
+<section class="hero">
+<div class="profile">
+<div class="avatar">JS</div>
+<div>
+<h1>Welcome, Janani! 👋</h1>
+<p>Smart Student Performance & Activity Management System</p>
+</div>
+</div>
+</section>
+
+<section class="cards">
+<div class="card c1"><h3>Attendance</h3><div class="number">92%</div><small>Excellent progress</small></div>
+<div class="card c2"><h3>Average Marks</h3><div class="number">86%</div><small>Above class average</small></div>
+<div class="card c3"><h3>Assignments</h3><div class="number">12</div><small>9 completed</small></div>
+<div class="card c4"><h3>Activities</h3><div class="number">08</div><small>3 certificates</small></div>
+</section>
+
+<section class="panel">
+<div class="panel-head"><h2>📊 Student Performance</h2><span class="badge">2026 - 2027</span></div>
+<div class="table-wrap"><table>
+<tr><th>Subject</th><th>Internal</th><th>Assignment</th><th>Attendance</th><th>Overall</th><th>Progress</th></tr>
+<tr><td>Java Programming</td><td>45/50</td><td>18/20</td><td>95%</td><td><b>91%</b></td><td><div class="progress"><div class="bar" style="width:91%"></div></div></td></tr>
+<tr><td>Python</td><td>43/50</td><td>19/20</td><td>94%</td><td><b>89%</b></td><td><div class="progress"><div class="bar" style="width:89%"></div></div></td></tr>
+<tr><td>Web Technology</td><td>47/50</td><td>20/20</td><td>96%</td><td><b>94%</b></td><td><div class="progress"><div class="bar" style="width:94%"></div></div></td></tr>
+<tr><td>Operating Systems</td><td>40/50</td><td>17/20</td><td>88%</td><td><b>84%</b></td><td><div class="progress"><div class="bar" style="width:84%"></div></div></td></tr>
+</table></div>
+</section>
+
+<div class="grid2">
+<section class="panel">
+<div class="panel-head"><h2>📅 Attendance</h2><span class="badge">92% Overall</span></div>
+<div class="table-wrap"><table>
+<tr><th>Date</th><th>Subject</th><th>Hour</th><th>Status</th></tr>
+<tr><td>28 Sep</td><td>Java</td><td>09:00 AM</td><td><span class="status present">Present</span></td></tr>
+<tr><td>27 Sep</td><td>Python</td><td>10:00 AM</td><td><span class="status present">Present</span></td></tr>
+<tr><td>26 Sep</td><td>OS</td><td>11:00 AM</td><td><span class="status absent">Absent</span></td></tr>
+<tr><td>25 Sep</td><td>Web Tech</td><td>02:00 PM</td><td><span class="status present">Present</span></td></tr>
+</table></div>
+</section>
+
+<section class="panel">
+<div class="panel-head"><h2>📝 Assignments</h2><button class="add" onclick="addAssignment()">+ Add</button></div>
+<div class="table-wrap"><table id="assignments">
+<tr><th>Assignment</th><th>Subject</th><th>Due Date</th><th>Status</th></tr>
+<tr><td>Java OOP Program</td><td>Java</td><td>30 Sep</td><td><span class="status completed">Completed</span></td></tr>
+<tr><td>ML Mini Task</td><td>Python</td><td>02 Oct</td><td><span class="status pending">Pending</span></td></tr>
+<tr><td>HTML Portfolio</td><td>Web Tech</td><td>04 Oct</td><td><span class="status completed">Completed</span></td></tr>
+</table></div>
+</section>
+</div>
+
+<section class="panel">
+<div class="panel-head"><h2>🏆 Student Activities</h2><span class="badge">Achievements</span></div>
+<div class="table-wrap"><table>
+<tr><th>Activity</th><th>Category</th><th>Date</th><th>Achievement</th></tr>
+<tr><td>AI & Automation Workshop</td><td>Technical</td><td>18 Sep 2026</td><td><span class="status completed">Certificate</span></td></tr>
+<tr><td>English Communication</td><td>Skill</td><td>30 Jul 2026</td><td><span class="status completed">Completed</span></td></tr>
+<tr><td>College Hackathon</td><td>Competition</td><td>10 Aug 2026</td><td><span class="status completed">Participant</span></td></tr>
+</table></div>
+</section>
+
+<section class="panel">
+<div class="panel-head"><h2>🔔 Notifications</h2><span class="badge">3 New</span></div>
+<div class="table-wrap"><table>
+<tr><th>Message</th><th>Date</th><th>Priority</th></tr>
+<tr><td>Internal assessment marks have been updated.</td><td>28 Sep</td><td><span class="status completed">Normal</span></td></tr>
+<tr><td>Python assignment submission deadline is near.</td><td>27 Sep</td><td><span class="status pending">Important</span></td></tr>
+<tr><td>Web Technology practical class tomorrow.</td><td>26 Sep</td><td><span class="status present">Info</span></td></tr>
+</table></div>
+</section>
+
+<section class="panel">
+<div class="panel-head"><h2>👤 Profile</h2><span class="badge">Student ID: EDU2026JS</span></div>
+<div class="grid2">
+<div><b>Name</b><input value="Janani S" readonly></div>
+<div><b>Department</b><input value="Computer Science" readonly></div>
+<div><b>College</b><input value="Sree Abiraami Arts & Science College for Women" readonly></div>
+<div><b>Academic Year</b><input value="2026 - 2027" readonly></div>
+</div>
+</section>
+</main>
+<footer>© 2026 EduPulse • Smart Student Intelligence Platform</footer>
+
+<script>
+function toggleDark(){document.body.classList.toggle('dark');localStorage.setItem('edupulseDark',document.body.classList.contains('dark'))}
+if(localStorage.getItem('edupulseDark')==='true')document.body.classList.add('dark');
+function addAssignment(){
+ const t=document.getElementById('assignments');
+ const r=t.insertRow();
+ r.innerHTML='<td>New Student Assignment</td><td>Computer Science</td><td>10 Oct</td><td><span class="status pending">Pending</span></td>';
+ alert('New assignment added successfully!');
+}
+</script>
+</body>
+</html>
